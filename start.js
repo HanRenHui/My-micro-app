@@ -3,7 +3,6 @@ import { setLifyCycle } from './const/lifeCycle'
 import { rewriteRouter } from './router'
 import { parseHtml } from './lifecycle/index'
 
-rewriteRouter()
 
 export const registerMicroApps = (appList, lifyCycle) => {
     setList(appList)
@@ -18,6 +17,9 @@ async function preFetch() {
 }
 
 export const start = () => {
+    
+    rewriteRouter()
+
     const list = getList()
     const pathname = window.location.pathname
     const currentRule = pathname.match(/^\/\w+/)[0]

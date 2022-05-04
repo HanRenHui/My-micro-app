@@ -26,7 +26,6 @@ export const sandBox =  (script, app) => {
     window.__MICRO_WEB__ = true;
 
     const lifeCycle = performScript(script, app, app.proxy.proxy)
-    console.log('lifeCycle', lifeCycle)
     if (isLifeCycle(lifeCycle)) {
         app.mount = lifeCycle.mount
         app.unmount = lifeCycle.unmount
