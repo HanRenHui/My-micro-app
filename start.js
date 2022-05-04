@@ -9,7 +9,7 @@ export const registerMicroApps = (appList, lifyCycle) => {
     setLifyCycle(lifyCycle)
 }
 
-async function preFetch() {
+export async function preFetch() {
     const pathname = window.location.pathname
     const currentRule = pathname.match(/^\/\w+/)[0]
     const apps = getList().filter(item => item.activeRule !== currentRule)
@@ -17,7 +17,7 @@ async function preFetch() {
 }
 
 export const start = () => {
-    
+
     rewriteRouter()
 
     const list = getList()
@@ -33,5 +33,5 @@ export const start = () => {
         window.__CURRENT_APP__ = targetAppItem.activeRule
     }
 
-    preFetch()
+    // preFetch()
 }

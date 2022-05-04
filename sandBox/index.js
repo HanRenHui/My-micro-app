@@ -1,11 +1,13 @@
 import ProxySandBox from './ProxySandBox';
 
 function performScript(script, app, global) {
+    window.__INJECTED_PUBLIC_PATH__ = app.entry
+
     window.proxy = global
     const scriptText = `
         return ((window) => {
             const module = {exports: {}}
-            const exports = module.exports
+            const exports = module.exports;
             ;${script}
             return module.exports
         }

@@ -88,20 +88,21 @@ function getResources(root, app) {
   const deepParse = (ele) => {
     if (!ele) return;
     if (ele.tagName.toLowerCase() === 'script') {
-      if (ele.src) {
-        if (ele.src.startsWith('http')) {
-          scriptUrls.push(ele.src);
+      const src = ele.getAttribute('src')
+      if (src) {
+        if (src.startsWith('http')) {
+          scriptUrls.push(src);
         } else {
-          scriptUrls.push(`http:${entry}${ele.src}`);
+          scriptUrls.push(`${entry}${src}`);
         }
       } else {
         scripts.push(ele.innerHTML);
       }
-      ele.parentNode &&
-        ele.parentNode.replaceChild(
-          document.createComment('哈哈哈已被替换'),
-          ele
-        );
+      // ele.parentNode &&
+      //   ele.parentNode.replaceChild(
+      //     document.createComment('哈哈哈已被替换'),
+      //     ele
+      //   );
     }
     if (ele.children) {
       Array.from(ele.children).forEach((child) => deepParse(child));
