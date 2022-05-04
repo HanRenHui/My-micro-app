@@ -2,14 +2,12 @@ import ProxySandBox from './ProxySandBox';
 
 function performScript(script, app, global) {
     window.proxy = global
-    console.log(12232323, script)
     const scriptText = `
         return ((window) => {
             const module = {exports: {}}
             const exports = module.exports
             ;${script}
-            console.log(111111, module.exports, exports === module.exports)
-            return exports
+            return module.exports
         }
         )(window.proxy)
     `
