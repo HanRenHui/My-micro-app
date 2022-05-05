@@ -98,11 +98,11 @@ function getResources(root, app) {
       } else {
         scripts.push(ele.innerHTML);
       }
-      // ele.parentNode &&
-      //   ele.parentNode.replaceChild(
-      //     document.createComment('哈哈哈已被替换'),
-      //     ele
-      //   );
+      ele.parentNode &&
+        ele.parentNode.replaceChild(
+          document.createComment('哈哈哈已被替换'),
+          ele
+        );
     }
     if (ele.children) {
       Array.from(ele.children).forEach((child) => deepParse(child));
